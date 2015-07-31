@@ -1,0 +1,22 @@
+{
+  "name": "protobuf-doc",
+  "version": "0.0.1",
+  "description": "Protobuf Documentation Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/milanito/protobuf-doc.git"
+  },
+  "keywords": [
+    "protobuf"
+  ],
+  "author": "Matthieu Rondeau <matt@matthieurondeau.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/milanito/protobuf-doc/issues"
+  },
+  "homepage": "https://github.com/milanito/protobuf-doc#readme"
+}
