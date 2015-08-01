@@ -1,0 +1,66 @@
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="/#/">Packages</a>
+            </li>
+            <li ng-repeat="package in packages">
+                <a href="/#/#{{package.name}}">{{package.name}}</a>
+            </li>
+        </ul>
+    </div>
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default" ng-repeat="package in packages" id="{{package.name}}">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <h3>Package: {{package.name}}</h3>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>Messages</h4>
+                                    <ul class="list-group">
+                                        <li class="list-group-item" ng-repeat="message in package.messages" id="{{message.name}}">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h5> Name: {{message.name}}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <table st-table="message.fields" class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Name</th>
+                                                                <th>Rule</th>
+                                                                <th>Type</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="field in message.fields">
+                                                                <td>{{field.id}}</td>
+                                                                <td>{{field.name}}</td>
+                                                                <td>{{field.rule}}</td>
+                                                                <td><a href="/#/#{{field.type}}">{{field.type}}</a></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

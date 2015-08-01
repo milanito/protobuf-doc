@@ -1,8 +1,8 @@
 {
   "name": "protobuf-doc",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Protobuf Documentation Generator",
-  "main": "index.js",
+  "main": "./bin/protobuf-doc.js",
   "scripts": {
     "test": "grunt test"
   },
@@ -18,5 +18,16 @@
   "bugs": {
     "url": "https://github.com/milanito/protobuf-doc/issues"
   },
-  "homepage": "https://github.com/milanito/protobuf-doc#readme"
+  "homepage": "https://github.com/milanito/protobuf-doc#readme",
+  "preferGlobal": true,
+  "bin": {
+    "protobuf-doc": "./bin/protobuf-doc.js"
+  },
+  "dependencies": {
+    "fs-extra": "^0.22.1",
+    "lodash": "^3.10.0",
+    "ncp": "^2.0.0",
+    "q": "^1.4.1",
+    "yamljs": "^0.2.3"
+  }
 }
