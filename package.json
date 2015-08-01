@@ -2,7 +2,7 @@
   "name": "protobuf-doc",
   "version": "0.1.0",
   "description": "Protobuf Documentation Generator",
-  "main": "./bin/protobuf-doc.js",
+  "main": "index.js",
   "scripts": {
     "test": "grunt test"
   },
