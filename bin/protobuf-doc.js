@@ -1,29 +1,33 @@
 #!/usr/bin/env node
 
-'use strict';
+var DEFAULT_CONFIG = './protobuf-doc.yaml';
 
-var configReader = require('../lib/config-reader');
-var fileReader = require('../lib/files-reader');
-var tokenizer = require('../lib/tokenizer');
-var parser = require('../lib/parser');
-var commentsExtractor = require('../lib/comment-extractor');
-var dataHandler = require('../lib/data-handler');
-var fileHandler = require('../lib/file-handler');
+var cliArgs = require("command-line-args");
 
-configReader.readConfigFile()
-.then(configReader.parseYAML)
-.then(fileReader.readSrc)
-.then(fileReader.readFiles)
-.then(parser.tokenizeItems)
-.then(parser.parseItems)
-.then(commentsExtractor.extract)
-.then(dataHandler.transformData)
-.then(fileHandler.rmDocFolder)
-.then(fileHandler.createDocFolder)
-.then(fileHandler.copyTemplates)
-.then(fileReader.readTemplate)
-.then(dataHandler.replaceInString)
-.catch(function(err) {
-    console.log(err);
-})
-.done();
+var protobufdoc = require('../lib/protobuf-doc.js');
+
+// Define Options
+var cli = cliArgs([
+    { name: 'config', type: String, alias: 'c', description: 'Config file' },
+    { name: 'help', type: Boolean, alias: 'h', description: 'Print usage instructions' },
+]);
+
+try {
+    var usage = cli.getUsage({
+        header: 'Protocol Buffer Documentation Generator',
+        footer: 'For more information, visit https://github.com/milanito/protobuf-doc'
+    });
+    var argv = cli.parse();
+
+    if (argv.help) {
+        console.log(usage);
+    } else if (argv.config) {
+        protobufdoc.withConfigFile(argv.config);
+    } else {
+        protobufdoc.withConfigFile(DEFAULT_CONFIG);
+    }
+} catch(e) {
+    console.log(e)
+    console.log('Error: Unexpected Option');
+    console.log(usage);
+}
