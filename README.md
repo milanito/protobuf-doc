@@ -27,7 +27,15 @@ You can also use by providing a custome file :
 
     $ protobuf-doc -c <config-file>
 
-This will generate a site in the `dest` folder. Then you can browse it using
+This will generate a site in the `dest` folder.
+
+To host the documentation, simply add the `connect` option :
+
+    $ protobuf-doc --connect
+
+This will launch a web server hosting the documentation.
+
+Or you can browse it using
 a static site server, for example with [http-server](https://www.npmjs.com/package/http-server) :
 
     $ npm install http-server -g

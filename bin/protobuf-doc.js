@@ -10,7 +10,8 @@ var misc = require('../lib/misc');
 var cli = cliArgs([
     { name: 'verbose', type: Boolean, alias: 'v', description: 'Display informations' },
     { name: 'theme', type: String, alias: 't', description: 'Theme to use' },
-    { name: 'config', type: String, alias: 'c', description: 'Config file' },
+    { name: 'config', type: String, alias: 'f', description: 'Config file' },
+    { name: 'connect', type: Boolean, alias: 'c', description: 'Open Server' },
     { name: 'help', type: Boolean, alias: 'h', description: 'Print usage instructions' },
 ]);
 
@@ -22,14 +23,14 @@ try {
     var argv = cli.parse();
 
     argv.verbose = argv.verbose || false;
+    argv.connect = argv.connect || false;
     argv.theme = argv.theme || misc.DEFAULT_THEME;
+    argv.config = argv.config || misc.DEFAULT_CONFIG;
 
     if (argv.help) {
         console.log(usage);
-    } else if (argv.config) {
-        protobufdoc.withConfigFile(argv.config, argv.verbose, argv.theme);
     } else {
-        protobufdoc.withConfigFile(misc.DEFAULT_CONFIG, argv.verbose, argv.theme);
+        protobufdoc.withConfigFile(argv);
     }
 } catch(e) {
     console.log(e)
