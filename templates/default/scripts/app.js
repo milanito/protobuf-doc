@@ -12,16 +12,14 @@ angular.module('protobufDoc', [
     .when('/', {
         templateUrl: 'views/doc.html',
         controller: 'DocCtrl',
-        resolve: {
-            data: [function() {
-                return JSON.parse('{%data%}')
-            }]
-        }
     })
     .otherwise({
         redirectTo: '/'
     });
 })
+.factory('data', [function() {
+    return JSON.parse('{%data%}')
+}])
 .factory('_', ['$window', function($window) {
     var _ = $window._;
     delete $window._;

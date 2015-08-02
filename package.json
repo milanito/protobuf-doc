@@ -24,6 +24,7 @@
     "protobuf-doc": "./bin/protobuf-doc.js"
   },
   "dependencies": {
+    "better-console": "^0.2.4",
     "command-line-args": "^0.5.9",
     "fs-extra": "^0.22.1",
     "lodash": "^3.10.0",

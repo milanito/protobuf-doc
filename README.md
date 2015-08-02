@@ -38,9 +38,34 @@ The documentation for the moment is a simple angular app
 
 See the `protobuf-doc -h` command for help
 
+# Theme
+
+Creating a theme is fairly easy: Theme are angularjs js with the current structure
+
+    theme_name
+    +-- index.html
+    +-- scripts
+    |   +-- app.js
+    |   +-- [All other javscript scripts]
+    +-- styles
+    |   +-- [All css]
+    +-- views
+    |   +-- [All templates in html]
+
+You need to have a string `{%data%}` in your `app.js` file, it will be replace by the parsed data.
+The easiest way to manipulate it is to use a factory like in the default theme.
+
+    .factory(‘data’, [function() {
+        return JSON.parse(‘{%data%}’)
+    }])
+
+Check the default theme for more detail, it is a very simple application.
+
+After that, put your theme in the `templates` directory and use it like this :
+
+    $ protobuf-doc -t <your_theme_name>
+
 # TODO
 
 * Handle comments
-* Handle executable options
-* Make help
 * Improve documentation
